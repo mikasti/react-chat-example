@@ -14,12 +14,7 @@ interface IUserChat {
 }
 
 const UserChat: React.FC<IUserChat> = ({ messages, profileUId, onProfileClick }) => {
-    const { isDarkTheme, changeShowComponent } = useContext(AppContext);
-
-    useEffect(() => {
-        changeShowComponent('Chat');
-    }, []);
-
+    const { isDarkTheme } = useContext(AppContext);
     const chatBackgroundClassName = MakeThemeClassName('chat-background', isDarkTheme);
 
     if (!messages) {

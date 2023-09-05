@@ -17,11 +17,6 @@ const UserCard: React.FC<IUserCard> = ({ profile, onReturnClick }) => {
   const {
     name, bio, image, isOnline, nick, eMail, phone, userUID,
   } = profile;
-  const { changeShowComponent } = useContext(AppContext);
-
-  useEffect(() => {
-    changeShowComponent('Profile');
-  }, []);
 
   const handleReturnClick = useCallback(() => {
     if (onReturnClick) {

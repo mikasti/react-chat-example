@@ -11,6 +11,7 @@ import Popup from '../components/molecules/Modal';
 import UserChatMessage from '../components/molecules/UserChatMessage';
 import MakeSubmitUserMessage from '../components/helpers/MakeSubmitUserMessage';
 import UserChatSearch from '../components/organisms/UserChatSearch';
+import ShowComponent from '../components/organisms/ShowComponent';
 
 const ChatPage: React.FC = () => {
   const [currentComponent, setCurrentComponent] = useState<TAppComponents>(null);
@@ -74,6 +75,9 @@ const ChatPage: React.FC = () => {
   }, []);
 
   const handleOpenSearchPanel = useCallback(() => {
+    if (isShowSearchPanel) {
+      setFilterMessages(userMessages);
+    }
     setIsShowSearchPanel(!isShowSearchPanel);
   }, [isShowSearchPanel]);
 
@@ -99,14 +103,18 @@ const ChatPage: React.FC = () => {
   }, [userMessages]);
 
   const userProfile = showUserProfile &&
-    <UserCard profile={showUserProfile} onReturnClick={handleShowUserProfile} />;
+    <ShowComponent renderComponent='Profile'>
+      <UserCard profile={showUserProfile} onReturnClick={handleShowUserProfile} />
+    </ShowComponent>
 
   const userChat = !showUserProfile && currentUser?.userUID &&
-    <UserChat
-      profileUId={currentUser.userUID}
-      messages={filterMessages}
-      onProfileClick={handleShowUserProfile}
-    />;
+    <ShowComponent renderComponent='Chat'>
+      <UserChat
+        profileUId={currentUser.userUID}
+        messages={filterMessages}
+        onProfileClick={handleShowUserProfile}
+      />
+    </ShowComponent>
 
   const addMessageComponent = isShowPopup &&
     <Popup onClose={handleClosePopup}>
