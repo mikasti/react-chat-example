@@ -1,0 +1,17 @@
+@import '../../variables';
+
+.message-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+
+    .primary {
+        fill: #C2D7DE;
+    }
+
+    &--selected {
+        .primary {
+            fill: $background-color-message-dark
+        }
+    }
+}

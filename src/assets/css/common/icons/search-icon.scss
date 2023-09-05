@@ -1,0 +1,24 @@
+.icon-search {
+    width: 24px;
+    height: 24px;
+    margin-left: 28px;
+    cursor: pointer;
+
+    .primary {
+        fill: #C2D7DE;
+    }
+
+    .secondary {
+        fill: #47889E;
+    }
+
+    &:hover {
+        .primary {
+            fill: #47889E;
+        }
+
+        .secondary {
+            fill: #C2D7DE;
+        }
+    }
+}

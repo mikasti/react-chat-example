@@ -1,0 +1,39 @@
+@import '../variables';
+@import '../common/input.scss';
+
+.user-search {
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid $text-secondary-color-dark;
+    justify-content: center;
+    align-items: center;
+    min-width: 0px;
+    min-height: 64px;
+    background-color: $top-color-light;
+
+    &--dark {
+        @extend .user-search;
+        background-color: $top-color-dark;
+        border-top: 1px solid $text-secondary-color-light;
+    }
+}
+
+.search-input {
+    @extend .input;
+    margin: 0px 32px 0px 16px;
+}
+
+.search-mode {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 0;
+    margin-left: 16px;
+}
+
+.search-mode-separator {
+    width: 2px;
+    height: 18px;
+    margin: 0px 6px 0px 4px;
+    background-color: $background-color-message-dark;
+}

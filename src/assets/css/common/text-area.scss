@@ -1,0 +1,33 @@
+@import "../_variables.scss";
+
+.text-area {
+  resize: none;
+  width: 100%;
+  border: 2px solid #cccccc;
+  border-radius: 6px;
+  padding: 5px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-position: bottom right;
+  background-repeat: no-repeat;
+
+  &--modal {
+    @extend .text-area;
+    padding: 8px;
+    width: 94%;
+    margin: 0 auto;
+  }
+
+  &--dark {
+    @extend .text-area;
+    background-color: $background-color-message-dark;
+  }
+
+  &:focus {
+    outline: none !important;
+    border-color: $background-color-message-dark;
+  }
+
+  &:hover {
+    border-color: $background-color-message-dark;
+  }
+}

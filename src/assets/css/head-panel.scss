@@ -1,0 +1,16 @@
+@import "./_variables.scss";
+
+.head-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 0px;
+  min-height: 64px;
+  background-color: $top-color-light;
+  border-radius: 8px 8px 0px 0px;
+
+  &--dark {
+    @extend .head-panel;
+    background-color: $top-color-dark;
+  }
+}

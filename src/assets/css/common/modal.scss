@@ -1,0 +1,44 @@
+@import '../variables';
+
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  background-color: #fefefe;
+  border-radius: 6px;
+  margin: 20% auto;
+  padding: 8px;
+  width: 80%;
+
+  &--dark {
+    @extend .modal-content;
+    background-color: $top-color-dark;
+  }
+}
+
+.modal-close {
+  margin: 0 8px 8px auto;
+  padding-right: 8px;
+  color: $text-secondary-color-dark;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  color: $text-secondary-color-light;
+  text-decoration: none;
+  cursor: pointer;
+}

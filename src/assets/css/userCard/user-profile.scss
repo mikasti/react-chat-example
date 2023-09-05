@@ -1,0 +1,94 @@
+@import '../variables';
+
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  min-width: 0px;
+  align-items: center;
+  background-color: $background-color-light;
+
+  &--dark {
+    background-color: $background-color-dark;
+  }
+}
+
+.user-img {
+  height: 112px;
+  width: 112px;
+  margin: -16px auto 0px auto;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 8px solid $background-color-light;
+
+  &--dark {
+    border: 8px solid $background-color-dark;
+  }
+
+  color: white;
+  font-size: 32px;
+  font-family: system-ui;
+  font-weight: 400;
+  background: linear-gradient(0deg, #47889e 0%, rgba(96, 210, 163, 1) 100%);
+  ;
+}
+
+.user-name {
+  margin-top: 8px;
+  font-size: 24px;
+  font-family: system-ui;
+  font-weight: 600;
+  color: $text-primary-color-light;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: -webkit-fill-available;
+
+  &--dark {
+    color: $text-primary-color-dark;
+  }
+}
+
+.user-bio {
+  font-size: 14px;
+  font-family: system-ui;
+  font-weight: 400;
+  color: $text-primary-color-light;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: -webkit-fill-available;
+
+  &--dark {
+    color: $text-primary-color-dark;
+  }
+}
+
+.user-status {
+  min-width: 58px;
+  min-height: 24px;
+  margin: 12px 0px 28px 0px;
+  padding: 0 2px;
+  font-weight: 600;
+  border: 0;
+  border-radius: 5px;
+  color: white;
+  background-color: $online-status;
+  cursor: pointer;
+
+  &:disabled {
+    color: #979797;
+    background-color: #E2E2E2;
+
+    &:hover {
+      background-color: #E2E2E2;
+    }
+  }
+
+  &:hover {
+    background-color: rgba(96, 210, 163, 0.7);
+  }
+}

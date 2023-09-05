@@ -1,0 +1,24 @@
+.icon-chat {
+    width: 28px;
+    height: 28px;
+    margin-right: 28px;
+    cursor: pointer;
+
+    .primary {
+        fill: #C2C7CE;
+    }
+
+    .secondary {
+        fill: #757F97;
+    }
+
+    &:hover {
+        .primary {
+            fill: #757F97;
+        }
+
+        .secondary {
+            fill: #C2C7CE;
+        }
+    }
+}

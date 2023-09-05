@@ -1,0 +1,23 @@
+.icon-star {
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+
+    .primary {
+        fill: #F4EAD1;
+    }
+
+    .secondary {
+        fill: #EBBA5C;
+    }
+
+    &:hover {
+        .primary {
+            fill: #EBBA5C;
+        }
+
+        .secondary {
+            fill: #F4EAD1;
+        }
+    }
+}
