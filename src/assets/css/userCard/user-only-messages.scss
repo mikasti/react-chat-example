@@ -1,0 +1,45 @@
+@import '../variables';
+
+.user-only-messages {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $background-color-light;
+    border-radius: 0px 0px 8px 8px;
+
+    &--dark {
+        @extend .user-only-messages;
+        background-color: $background-color-dark;
+    }
+}
+
+.user-only-messages-button {
+    min-height: 32px;
+    font-weight: 600;
+    padding: 2px 16px;
+    margin: 16px;
+    border: 0;
+    border-radius: 5px;
+    color: white;
+    background-color: $background-color-message-dark;
+    cursor: pointer;
+
+    &--dark {
+        @extend .user-only-messages-button;
+        background-color: $background-color-message-dark;
+    }
+
+    &:disabled {
+        color: #979797;
+        background-color: #E2E2E2;
+
+        &:hover {
+            background-color: #E2E2E2;
+        }
+    }
+
+    &:hover {
+        background-color: rgba(71, 136, 158, 0.7);
+    }
+
+}

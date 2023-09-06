@@ -5,11 +5,9 @@ import './Assets/CSS/main.scss';
 // Root component containing our pages
 
 const App: React.FC = () => {
-  const chatPage = <ChatPage />;
-
   return (
     <div className="main">
-      {chatPage}
+      <ChatPage />
     </div>
   );
 };

@@ -11,8 +11,13 @@
 
     &--selected {
         .primary {
-            fill: $background-color-message-dark
+            fill: $selected-icon;
         }
+    }
 
+    &:hover {
+        .primary {
+            fill: $background-color-message-dark;
+        }
     }
 }

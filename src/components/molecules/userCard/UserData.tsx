@@ -1,17 +1,17 @@
 import React, { useContext } from 'react';
 import { IUser } from '../../../types/MainTypes';
 import UserInfo from '../../atom/UserInfo';
-import ThemeContext from '../../context/AppContext';
+import AppContext from '../../context/AppContext';
 import MakeThemeClassName from '../../helpers/MakeThemeClassname';
 
 type TBottomPanelData = Pick<IUser, | 'nick' | 'eMail' | 'phone'>;
 
 // Example of Molecules, we connect our Atom for rendering user info
 
-const UserData: React.FC<TBottomPanelData> = ({
+const UserData: React.FC<TBottomPanelData> = React.memo(({
   nick, eMail, phone,
 }) => {
-  const { isDarkTheme } = useContext(ThemeContext);
+  const { isDarkTheme } = useContext(AppContext);
   const infoBlockClassName = MakeThemeClassName('user-data', isDarkTheme);
   const mapValues = [
     { name: 'Nickname', value: nick },
@@ -24,6 +24,6 @@ const UserData: React.FC<TBottomPanelData> = ({
     } return null;
   });
   return <div className={infoBlockClassName}>{infoComp}</div>;
-};
+});
 
 export default UserData;

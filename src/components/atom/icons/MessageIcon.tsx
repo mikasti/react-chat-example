@@ -1,5 +1,5 @@
-import React from "react";
-import { IIconProps } from "../../../types/MainTypes";
+import React from 'react';
+import { IIconProps } from '../../../types/MainTypes';
 import '../../../assets/css/common/icons/message-icon.scss';
 
 const MessageIcon: React.FC<IIconProps> = ({ className = 'message-icon', onClick }) => {

@@ -2,44 +2,39 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import UserCard from '../components/organisms/UserCard';
 import UserWrapperTemplate from '../components/templates/UserPageTemplate';
 import HeadPanel from '../components/molecules/HeadPanel';
-import UserChat from '../components/organisms/UserChat';
-import mockChatApi from '../__mocks__/mockChatApi';
 import { IMessage } from '../types/ChatTypes';
 import AppContext, { TAppComponents } from '../components/context/AppContext';
 import { IUser } from '../types/MainTypes';
-import Popup from '../components/molecules/Modal';
-import UserChatMessage from '../components/molecules/UserChatMessage';
-import MakeSubmitUserMessage from '../components/helpers/MakeSubmitUserMessage';
 import UserChatSearch from '../components/organisms/UserChatSearch';
 import ShowComponent from '../components/organisms/ShowComponent';
+import useGetMessages from '../components/hooks/useGetMessages';
+import UserChat from '../components/organisms/UserChat';
+import LoaderComp from '../components/molecules/LoaderComp';
+import MakeSubmitUserMessage from '../components/helpers/MakeSubmitUserMessage';
 
 const ChatPage: React.FC = () => {
   const [currentComponent, setCurrentComponent] = useState<TAppComponents>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [currentUser, setCurrentUser] = useState<IUser | null>(null);
-  const [userMessages, setUserMessages] = useState<IMessage[]>([]);
-  const [filterMessages, setFilterMessages] = useState<IMessage[]>([]);
   const [isDarkTheme, setDarkTheme] = useState<boolean>(false);
+  const [filterMessages, setFilterMessages] = useState<IMessage[]>([]);
   const [showUserProfile, setShowUserProfile] = useState<IUser | null>(null);
-  const [isShowPopup, setIsShowPopup] = useState(false);
-  const [isShowSearchPanel, setIsShowSearchPanel] = useState(false);
+  const [isShowWriteMessage, setIsShowWriteMessage] = useState<boolean>(false);
+  const [isShowSearchPanel, setIsShowSearchPanel] = useState<boolean>(false);
+  const [newUserMessage, setNewUserMessage] = useState<string | null>(null);
+
+  const { currentUser, userMessages, isLoading, error } = useGetMessages();
 
   useEffect(() => {
-    mockChatApi.getProfile()
-      .then((profile) => {
-        if (profile?.userUID) {
-          setCurrentUser(profile);
-          mockChatApi.getMessages()
-            .then((data) => {
-              setUserMessages(data.messages);
-              setFilterMessages(data.messages);
-            });
-        }
-      })
-      .catch((err) => {
-        setError(err);
-      })
-  }, []);
+    setFilterMessages(userMessages);
+  }, [userMessages]);
+
+  useEffect(() => {
+    if (newUserMessage && currentUser) {
+      const newMessageArr = [...filterMessages, MakeSubmitUserMessage(currentUser, newUserMessage)];
+      setFilterMessages(newMessageArr);
+      setNewUserMessage(null);
+    }
+
+  }, [newUserMessage, currentUser, filterMessages])
 
   const changeShowComponent = useCallback((showComponent: TAppComponents) => {
     setCurrentComponent(showComponent);
@@ -65,31 +60,23 @@ const ChatPage: React.FC = () => {
     setShowUserProfile(null);
   }, []);
 
-  const handleOpenPopup = useCallback(() => {
+  const handleWriteMessage = useCallback(() => {
     handleCloseUserProfile();
-    setIsShowPopup(true);
+    setIsShowWriteMessage(true);
   }, []);
 
   const handleClosePopup = useCallback(() => {
-    setIsShowPopup(false);
+    setIsShowWriteMessage(false);
   }, []);
 
-  const handleOpenSearchPanel = useCallback(() => {
-    if (isShowSearchPanel) {
-      setFilterMessages(userMessages);
-    }
+  const handleSearchPanel = useCallback(() => {
     setIsShowSearchPanel(!isShowSearchPanel);
   }, [isShowSearchPanel]);
 
-
   const handleSubmitUserMessage = useCallback((message: string) => {
-    if (currentUser) {
-      const newMessageArr = [...userMessages, MakeSubmitUserMessage(currentUser, message)]
-      setUserMessages(newMessageArr);
-      setFilterMessages(newMessageArr);
-    }
+    setNewUserMessage(message);
     handleClosePopup();
-  }, [userMessages, currentUser]);
+  }, [currentUser, userMessages]);
 
   const handleSearchInfo = useCallback((searchText: string, mode: 'Text' | 'User') => {
     if (mode === 'Text') {
@@ -102,44 +89,44 @@ const ChatPage: React.FC = () => {
     }
   }, [userMessages]);
 
+  if (error) {
+    return <h2>{`Error :(`}</h2>
+  }
+
+  if (isLoading) {
+    return <LoaderComp loadingText='Loading user messages...' />
+  }
+
+
+  const searchPanel = isShowSearchPanel && currentComponent === 'Chat' &&
+    <UserChatSearch onSearch={handleSearchInfo} />
+
+  const userChat = !showUserProfile && currentUser?.userUID &&
+    <UserChat
+      userUID={currentUser.userUID}
+      messages={filterMessages}
+      isShowAddMessage={isShowWriteMessage}
+      onProfileClick={handleShowUserProfile}
+      onCloseMessageAdd={handleClosePopup}
+      onPostMessage={handleSubmitUserMessage}
+    />
+
   const userProfile = showUserProfile &&
     <ShowComponent renderComponent='Profile'>
       <UserCard profile={showUserProfile} onReturnClick={handleShowUserProfile} />
     </ShowComponent>
 
-  const userChat = !showUserProfile && currentUser?.userUID &&
-    <ShowComponent renderComponent='Chat'>
-      <UserChat
-        profileUId={currentUser.userUID}
-        messages={filterMessages}
-        onProfileClick={handleShowUserProfile}
-      />
-    </ShowComponent>
-
-  const addMessageComponent = isShowPopup &&
-    <Popup onClose={handleClosePopup}>
-      <UserChatMessage onSendMessage={handleSubmitUserMessage} />
-    </Popup>;
-
-  const searchPanel = isShowSearchPanel && currentComponent === 'Chat' &&
-    <UserChatSearch onSearch={handleSearchInfo} />
-
-  if (error) {
-    return <h2>{`Error :(`}</h2>
-  }
-
   return (
     <UserWrapperTemplate>
       <AppContext.Provider value={memoAppContext}>
         <HeadPanel
-          onWriteMessage={handleOpenPopup}
-          onSearchMessage={handleOpenSearchPanel}
+          onWriteMessage={handleWriteMessage}
+          onSearchMessage={handleSearchPanel}
           onReturnBack={handleCloseUserProfile}
         />
         {searchPanel}
         {userChat}
         {userProfile}
-        {addMessageComponent}
       </AppContext.Provider>
     </UserWrapperTemplate>
   );

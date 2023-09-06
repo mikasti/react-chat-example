@@ -1,5 +1,5 @@
-import React from "react";
-import { IIconProps } from "../../../types/MainTypes";
+import React from 'react';
+import { IIconProps } from '../../../types/MainTypes';
 import '../../../assets/css/common/icons/user-icon.scss';
 
 const UserIcon: React.FC<IIconProps> = ({ className = 'user-icon', onClick }) => {

@@ -1,4 +1,4 @@
-import { IUser } from "./MainTypes";
+import { IUser } from './MainTypes';
 
 export interface IMessage {
   messageUID: string, // uniq message id
@@ -11,6 +11,7 @@ export interface IMessage {
     // mapCoordinates?: { latitude: string, longitude: string }, // we can add coordinates too
   },
   // replies?: IMessage,
+  //status?: 'Not Send' | 'Send' | 'Readed' 
 }
 
 export interface IDialog {

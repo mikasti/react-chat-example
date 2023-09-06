@@ -8,7 +8,7 @@ interface IProps {
     children: ReactChild | ReactChild[] | ReactFragment | ReactPortal | boolean | null | undefined;
 }
 
-const ShowComponent: React.FC<IProps> = ({ renderComponent, children }) => {
+const ShowComponent: React.FC<IProps> = React.memo(({ renderComponent, children }) => {
     const { changeShowComponent } = useContext(AppContext);
 
     useEffect(() => {
@@ -20,6 +20,6 @@ const ShowComponent: React.FC<IProps> = ({ renderComponent, children }) => {
             {children}
         </>
     );
-};
+});
 
 export default ShowComponent;

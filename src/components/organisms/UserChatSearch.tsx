@@ -3,7 +3,7 @@ import MessageIcon from '../atom/icons/MessageIcon';
 import UserIcon from '../atom/icons/UserIcon';
 import '../../assets/css/userSearch/user-search.scss';
 import Input from '../atom/common/Input';
-import ThemeContext from '../context/AppContext';
+import AppContext from '../context/AppContext';
 import MakeThemeClassName from '../helpers/MakeThemeClassname';
 
 export type TSearchMode = 'User' | 'Text';
@@ -11,10 +11,10 @@ export type TSearchMode = 'User' | 'Text';
 interface IUserChatSearch {
     onSearch: (searchText: string, mode: TSearchMode) => void,
 }
-const UserChatSearch: React.FC<IUserChatSearch> = ({ onSearch }) => {
+const UserChatSearch: React.FC<IUserChatSearch> = React.memo(({ onSearch }) => {
     const [searchQuery, setSearchQuery] = useState<string>('');
     const [currentMode, setCurrentMode] = useState<TSearchMode>('Text');
-    const { isDarkTheme } = useContext(ThemeContext);
+    const { isDarkTheme } = useContext(AppContext);
 
     useEffect(() => {
         onSearch(searchQuery, currentMode);
@@ -62,6 +62,6 @@ const UserChatSearch: React.FC<IUserChatSearch> = ({ onSearch }) => {
             />
         </div>
     )
-}
+});
 
 export default UserChatSearch;

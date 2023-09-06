@@ -1,16 +1,19 @@
 @import "../_variables.scss";
-.user-data{
+
+.user-data {
   border-top: 1px solid $top-color-light;
+  border-bottom: 1px solid $top-color-light;
   padding: 28px 0px;
   background-color: $background-color-light;
-  border-radius: 0px 0px 8px 8px;
-  &--dark{
+
+  &--dark {
     border-top: 1px solid $top-color-dark;
+    border-bottom: 1px solid $top-color-dark;
     background-color: $background-color-dark;
   }
 }
 
-.user-info{
+.user-info {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -22,24 +25,29 @@
   background-color: #F7F9FA;
   padding: 0 2px;
   border-radius: 2px;
-  &-primary{
+
+  &-primary {
     color: $text-primary-color-light;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: -webkit-fill-available;
-    &--dark{
+
+    &--dark {
       color: $text-primary-color-dark;
     }
   }
-  &-secondary{
+
+  &-secondary {
     color: $text-secondary-color-light;
     margin-right: 8px;
-    &--dark{
+
+    &--dark {
       color: $text-secondary-color-dark;
     }
   }
-  &--dark{
+
+  &--dark {
     @extend .user-info;
     background-color: transparent;
   }

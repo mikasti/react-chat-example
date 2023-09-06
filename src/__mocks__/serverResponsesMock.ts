@@ -1,4 +1,5 @@
-import { IMessage, IDialog } from '../types/ChatTypes';
+import MakeSubmitUserMessage from '../components/helpers/MakeSubmitUserMessage';
+import { IDialog } from '../types/ChatTypes';
 import { IUser } from '../types/MainTypes';
 
 export const userProfileMock: IUser = {
@@ -11,7 +12,7 @@ export const userProfileMock: IUser = {
   phone: '+357 77 777 777',
 };
 
-export const assistantProfileMock: IUser = {
+export const jamieProfileMock: IUser = {
   userUID: '008',
   name: 'Jamie Olivera',
   bio: 'Support engenier',
@@ -21,25 +22,23 @@ export const assistantProfileMock: IUser = {
   phone: '+357 88 888 888',
 };
 
-const assistantMessage: IMessage = {
-  messageUID: '1',
-  timestamp: '08:16 AM', // time when message created
-  author: assistantProfileMock,
-  content: {
-    message: `Good morning! How can I help you today?`,
-  },
+export const gordonProfileMock: IUser = {
+  userUID: '001',
+  name: 'Gordon Ramsey',
+  bio: 'Head engenier',
+  isOnline: true,
+  nick: '@gordonramsey',
+  eMail: 'gordonramsey@test.com',
+  phone: '+357 11 111 111',
 };
-
-const userMessage: IMessage = {
-  messageUID: '2',
-  timestamp: '08:18 AM', // time when message created
-  author: userProfileMock,
-  content: {
-    message: `I have a question about return policy for a product that I purchased.`,
-  },
-}
 
 
 export const userMessagesMock: IDialog = {
-  messages: [assistantMessage, userMessage]
+  messages: [
+    MakeSubmitUserMessage(jamieProfileMock, 'Good morning! What can I make for you today?'),
+    MakeSubmitUserMessage(gordonProfileMock, 'Make a normal breakfast!!!'),
+    MakeSubmitUserMessage(jamieProfileMock, 'As usual?'),
+    MakeSubmitUserMessage(gordonProfileMock, 'No, omelete, now!!!'),
+    MakeSubmitUserMessage(userProfileMock, 'Harsh:('),
+  ]
 }

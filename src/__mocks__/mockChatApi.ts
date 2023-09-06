@@ -1,13 +1,13 @@
-import { userProfileMock, userMessagesMock } from "./serverResponsesMock"
-import { IUser } from "../types/MainTypes"
-import { IDialog, IMessage } from "../types/ChatTypes";
+import { userProfileMock, userMessagesMock } from './serverResponsesMock';
+import { IUser } from '../types/MainTypes';
+import { IDialog, IMessage } from '../types/ChatTypes';
 
 interface IChatApi {
     getMessages: () => Promise<IDialog>,
     getMessagesByUId: (uid: string) => Promise<IDialog>,
     getProfile: () => Promise<IUser>,
 }
-const responseTimeMs: number = 10;
+const responseTimeMs: number = 100;
 
 const mockChatApi: IChatApi = {
     getMessages: async () => {

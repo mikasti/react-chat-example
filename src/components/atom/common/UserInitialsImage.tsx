@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo } from 'react';
 
 export interface IUserInitials {
     name: string,
@@ -6,17 +6,17 @@ export interface IUserInitials {
     onUserClick?: () => void,
 }
 
-const UserInitialsImage: React.FC<IUserInitials> = ({ name, imgClassName, onUserClick }) => {
+const UserInitialsImage: React.FC<IUserInitials> = React.memo(({ name, imgClassName, onUserClick }) => {
     const initials = useMemo(() => {
-        const arr = name.split(' ');
-        const firstLetter = (arr[0] && arr[0][0]?.toUpperCase()) || 'U';
-        const secondLetter = (arr[1] && arr[1][0]?.toUpperCase()) || '';
+        const [firstName = '', secondName = ''] = name.split(' ');
+        const firstLetter = firstName[0]?.toUpperCase() || 'U';
+        const secondLetter = secondName[0]?.toUpperCase() || '';
         return `${firstLetter}${secondLetter}`;
     }, [name]);
 
     return (
         <div className={imgClassName} onClick={onUserClick}>{initials}</div>
     );
-};
+});
 
 export default UserInitialsImage;

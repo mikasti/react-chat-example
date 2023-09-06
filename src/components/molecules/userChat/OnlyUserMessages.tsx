@@ -1,38 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import { IMessage } from '../../../types/ChatTypes';
-import UserChat from '../../organisms/UserChat';
-import mockChatApi from '../../../__mocks__/mockChatApi';
+import React from 'react';
+import useGetOnlyUserMessages from '../../hooks/useGetOnlyUserMessages';
+import LoaderComp from '../LoaderComp';
+import UserChatMessages from '../../organisms/UserChatMessages';
 
 interface IProps {
     uid: string,
 }
 
 const OnlyUserMessages: React.FC<IProps> = ({ uid }) => {
-    const [onlyUserMessage, setOnlyUserMessage] = useState<IMessage[] | null>(null);
-    const [error, setError] = useState<string | null>(null);
+    const { userMessages, error, isLoading } = useGetOnlyUserMessages(uid);
 
-    useEffect(() => {
-        mockChatApi.getMessagesByUId(uid)
-            .then((data) => {
-                if (data?.messages) {
-                    setOnlyUserMessage(data.messages)
-                }
-            })
-            .catch((err: string) => {
-                setError(err);
-            })
-    }, [uid]);
+    if (isLoading) {
+        return <LoaderComp loadingText='Loading user messages...' />
+    }
 
     if (error) {
         return <h2>{`Error :(`}</h2>
     }
 
     return (
-        <UserChat
+        <UserChatMessages
             profileUId={uid}
-            messages={onlyUserMessage}
+            messages={userMessages}
         />
     )
-}
+};
 
 export default OnlyUserMessages;

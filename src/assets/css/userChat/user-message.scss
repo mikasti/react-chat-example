@@ -2,7 +2,7 @@
 
 .chat-background {
     background-color: $background-color-light;
-    min-height: 512px;
+    border-radius: 0px 0px 8px 8px;
 
     &--dark {
         @extend .chat-background;
@@ -150,6 +150,7 @@
     font-family: system-ui;
     font-weight: 300;
     font-size: small;
+
     &--dark {
         @extend .user-chat-message-counter;
         color: $text-secondary-color-dark;

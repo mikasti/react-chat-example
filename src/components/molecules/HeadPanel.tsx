@@ -12,7 +12,7 @@ interface IProps {
   onReturnBack?: () => void,
 }
 
-const HeadPanel: React.FC<IProps> = ({ onWriteMessage, onSearchMessage, onReturnBack }) => {
+const HeadPanel: React.FC<IProps> = React.memo(({ onWriteMessage, onSearchMessage, onReturnBack }) => {
   const { currentComponent, isDarkTheme, changeTheme } = useContext(AppContext);
   const className = isDarkTheme ? 'head-panel--dark' : 'head-panel';
 
@@ -30,6 +30,6 @@ const HeadPanel: React.FC<IProps> = ({ onWriteMessage, onSearchMessage, onReturn
       <ChatIcon onClick={onWriteMessage} />
     </div>
   );
-};
+});
 
 export default HeadPanel;

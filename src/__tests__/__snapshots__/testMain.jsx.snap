@@ -1,0 +1,327 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render <Molecules> UserCard renders correctly 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="user-profile"
+      >
+        <div
+          class="user-img"
+        >
+          MI
+        </div>
+        <div
+          class="user-name"
+        >
+          Michael Ivanov
+        </div>
+        <div
+          class="user-bio"
+        >
+          Frontend Developer
+        </div>
+        <button
+          class="user-status"
+          type="button"
+        >
+          Online
+        </button>
+      </div>
+      <div
+        class="user-data"
+      >
+        <div
+          class="user-info"
+        >
+          <div
+            class="user-info-secondary"
+          >
+            Nickname
+          </div>
+          <div
+            class="user-info-primary"
+          >
+            @michael
+          </div>
+        </div>
+        <div
+          class="user-info"
+        >
+          <div
+            class="user-info-secondary"
+          >
+            Email
+          </div>
+          <div
+            class="user-info-primary"
+          >
+            michael@test.com
+          </div>
+        </div>
+        <div
+          class="user-info"
+        >
+          <div
+            class="user-info-secondary"
+          >
+            Phone
+          </div>
+          <div
+            class="user-info-primary"
+          >
+            +357 77 777 777
+          </div>
+        </div>
+      </div>
+      <div
+        class="user-only-messages"
+      >
+        <button
+          class="user-only-messages-button"
+          type="button"
+        >
+          Show user messages
+        </button>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="user-profile"
+    >
+      <div
+        class="user-img"
+      >
+        MI
+      </div>
+      <div
+        class="user-name"
+      >
+        Michael Ivanov
+      </div>
+      <div
+        class="user-bio"
+      >
+        Frontend Developer
+      </div>
+      <button
+        class="user-status"
+        type="button"
+      >
+        Online
+      </button>
+    </div>
+    <div
+      class="user-data"
+    >
+      <div
+        class="user-info"
+      >
+        <div
+          class="user-info-secondary"
+        >
+          Nickname
+        </div>
+        <div
+          class="user-info-primary"
+        >
+          @michael
+        </div>
+      </div>
+      <div
+        class="user-info"
+      >
+        <div
+          class="user-info-secondary"
+        >
+          Email
+        </div>
+        <div
+          class="user-info-primary"
+        >
+          michael@test.com
+        </div>
+      </div>
+      <div
+        class="user-info"
+      >
+        <div
+          class="user-info-secondary"
+        >
+          Phone
+        </div>
+        <div
+          class="user-info-primary"
+        >
+          +357 77 777 777
+        </div>
+      </div>
+    </div>
+    <div
+      class="user-only-messages"
+    >
+      <button
+        class="user-only-messages-button"
+        type="button"
+      >
+        Show user messages
+      </button>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Render App App renders correctly 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="main"
+      >
+        <div
+          class="loader-comp"
+        >
+          <div
+            class="lds-ripple"
+          >
+            <div />
+            <div />
+          </div>
+          <div
+            class="loader-text"
+          >
+            Loading user messages...
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="main"
+    >
+      <div
+        class="loader-comp"
+      >
+        <div
+          class="lds-ripple"
+        >
+          <div />
+          <div />
+        </div>
+        <div
+          class="loader-text"
+        >
+          Loading user messages...
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

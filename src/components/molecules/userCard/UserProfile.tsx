@@ -1,6 +1,6 @@
-import React, { useMemo, useContext } from 'react';
+import React, { useContext } from 'react';
 import { IUser } from '../../../types/MainTypes';
-import ThemeContext from '../../context/AppContext';
+import AppContext from '../../context/AppContext';
 import UserInitialsImage from '../../atom/common/UserInitialsImage';
 import MakeThemeClassName from '../../helpers/MakeThemeClassname';
 import Button from '../../atom/common/Button';
@@ -9,10 +9,10 @@ import '../../../Assets/CSS/userCard/user-profile.scss';
 type TMainPanelData = Pick<IUser, 'image' | 'name' | 'bio' | 'isOnline'> & { onReturnClick?: () => void };
 
 // Example of Molecules
-const UserProfile: React.FC<TMainPanelData> = ({
-  image, name = 'Some User', bio, isOnline, onReturnClick,
+const UserProfile: React.FC<TMainPanelData> = React.memo(({
+  image, name = 'Some User', bio, isOnline,
 }) => {
-  const { isDarkTheme } = useContext(ThemeContext);
+  const { isDarkTheme } = useContext(AppContext);
   const mainPanelClassName = MakeThemeClassName('user-profile', isDarkTheme);
   const imgClassName = MakeThemeClassName('user-img', isDarkTheme);
   const userClassName = MakeThemeClassName('user-name', isDarkTheme);
@@ -30,9 +30,9 @@ const UserProfile: React.FC<TMainPanelData> = ({
       {imgComp}
       <div className={userClassName}>{name}</div>
       {bioComp}
-      <Button className={statusClassName} label={buttonLabel} disabled={!isOnline} onClick={onReturnClick} />
+      <Button className={statusClassName} label={buttonLabel} disabled={!isOnline} />
     </div>
   );
-};
+});
 
 export default UserProfile;

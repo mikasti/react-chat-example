@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import '../../Assets/CSS/userCard/user-info.scss';
-import ThemeContext from '../context/AppContext';
+import AppContext from '../context/AppContext';
 import makeThemeClassname from '../helpers/MakeThemeClassname';
 
 interface IProps {
@@ -10,7 +10,7 @@ interface IProps {
 
 // Example of Atom component
 const UserInfo: React.FC<IProps> = ({ name = 'User', value = '' }) => {
-  const { isDarkTheme } = useContext(ThemeContext);
+  const { isDarkTheme } = useContext(AppContext);
   const infoClassName = makeThemeClassname('user-info', isDarkTheme);
   const secInfoClassName = makeThemeClassname('user-info-secondary', isDarkTheme);
   const priInfoClassName = makeThemeClassname('user-info-primary', isDarkTheme);
