@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { IUser } from '../../../types/MainTypes';
 import UserInfo from '../../atom/UserInfo';
 import AppContext from '../../context/AppContext';
-import MakeThemeClassName from '../../helpers/MakeThemeClassname';
+import makeThemeClassName from '../../helpers/makeThemeClassname';
 
 type TBottomPanelData = Pick<IUser, | 'nick' | 'eMail' | 'phone'>;
 
@@ -12,7 +12,7 @@ const UserData: React.FC<TBottomPanelData> = React.memo(({
   nick, eMail, phone,
 }) => {
   const { isDarkTheme } = useContext(AppContext);
-  const infoBlockClassName = MakeThemeClassName('user-data', isDarkTheme);
+  const infoBlockClassName = makeThemeClassName('user-data', isDarkTheme);
   const mapValues = [
     { name: 'Nickname', value: nick },
     { name: 'Email', value: eMail },

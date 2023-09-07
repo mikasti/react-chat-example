@@ -7,6 +7,7 @@
   background-color: $background-color-light;
 
   &--dark {
+    @extend .user-data;
     border-top: 1px solid $top-color-dark;
     border-bottom: 1px solid $top-color-dark;
     background-color: $background-color-dark;
@@ -34,6 +35,7 @@
     max-width: -webkit-fill-available;
 
     &--dark {
+      @extend .user-info-primary;
       color: $text-primary-color-dark;
     }
   }
@@ -43,6 +45,7 @@
     margin-right: 8px;
 
     &--dark {
+      @extend .user-info-secondary;
       color: $text-secondary-color-dark;
     }
   }

@@ -1,9 +1,6 @@
 @import '../variables';
 
 .user-only-messages {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     background-color: $background-color-light;
     border-radius: 0px 0px 8px 8px;
 
@@ -11,6 +8,12 @@
         @extend .user-only-messages;
         background-color: $background-color-dark;
     }
+}
+
+.user-only-messages-button-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .user-only-messages-button {

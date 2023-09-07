@@ -10,7 +10,7 @@ import ShowComponent from '../components/organisms/ShowComponent';
 import useGetMessages from '../components/hooks/useGetMessages';
 import UserChat from '../components/organisms/UserChat';
 import LoaderComp from '../components/molecules/LoaderComp';
-import MakeSubmitUserMessage from '../components/helpers/MakeSubmitUserMessage';
+import makeSubmitUserMessage from '../components/helpers/makeSubmitUserMessage';
 
 const ChatPage: React.FC = () => {
   const [currentComponent, setCurrentComponent] = useState<TAppComponents>(null);
@@ -29,7 +29,7 @@ const ChatPage: React.FC = () => {
 
   useEffect(() => {
     if (newUserMessage && currentUser) {
-      const newMessageArr = [...filterMessages, MakeSubmitUserMessage(currentUser, newUserMessage)];
+      const newMessageArr = [...filterMessages, makeSubmitUserMessage(currentUser, newUserMessage)];
       setFilterMessages(newMessageArr);
       setNewUserMessage(null);
     }
@@ -113,7 +113,7 @@ const ChatPage: React.FC = () => {
 
   const userProfile = showUserProfile &&
     <ShowComponent renderComponent='Profile'>
-      <UserCard profile={showUserProfile} onReturnClick={handleShowUserProfile} />
+      <UserCard profile={showUserProfile} />
     </ShowComponent>
 
   return (

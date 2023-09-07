@@ -1,4 +1,4 @@
-const MakeThemeClassName = (className: string, isDark: boolean) => (
+const makeThemeClassName = (className: string, isDark: boolean) => (
   isDark ? `${className} ${className}--dark` : `${className}`);
 
-export default MakeThemeClassName;
+export default makeThemeClassName;

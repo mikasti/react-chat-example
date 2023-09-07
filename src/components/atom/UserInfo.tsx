@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import '../../Assets/CSS/userCard/user-info.scss';
 import AppContext from '../context/AppContext';
-import makeThemeClassname from '../helpers/MakeThemeClassname';
+import makeThemeClassname from '../helpers/makeThemeClassname';
 
 interface IProps {
   name: string,

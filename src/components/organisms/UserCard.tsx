@@ -5,7 +5,7 @@ import UserData from '../molecules/userCard/UserData';
 import AppContext from '../context/AppContext';
 import Button from '../atom/common/Button';
 import OnlyUserMessages from '../molecules/userChat/OnlyUserMessages';
-import MakeThemeClassName from '../helpers/MakeThemeClassname';
+import makeThemeClassName from '../helpers/makeThemeClassname';
 import '../../assets/css/userCard/user-only-messages.scss';
 
 interface IUserCard {
@@ -21,11 +21,10 @@ const UserCard: React.FC<IUserCard> = React.memo(({ profile }) => {
   } = profile;
 
   const handleShowUserMessages = () => {
-    console.log('handleShowUserMessages');
     setIsShowUserMessages(!isShowUserMessages);
   };
 
-  const userOnlyMessages = MakeThemeClassName('user-only-messages', isDarkTheme);
+  const userOnlyMessages = makeThemeClassName('user-only-messages', isDarkTheme);
 
   return (
     <>
@@ -41,11 +40,13 @@ const UserCard: React.FC<IUserCard> = React.memo(({ profile }) => {
         phone={phone}
       />
       <div className={userOnlyMessages}>
-        <Button
-          className='user-only-messages-button'
-          label={(!isShowUserMessages) ? 'Show user messages' : 'Hide user messages'}
-          onClick={handleShowUserMessages}
-        />
+        <div className='user-only-messages-button-wrapper'>
+          <Button
+            className='user-only-messages-button'
+            label={(!isShowUserMessages) ? 'Show user messages' : 'Hide user messages'}
+            onClick={handleShowUserMessages}
+          />
+        </div>
         {isShowUserMessages && userUID && <OnlyUserMessages uid={userUID} />}
       </div>
 

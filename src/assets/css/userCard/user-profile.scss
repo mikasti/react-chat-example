@@ -8,6 +8,7 @@
   background-color: $background-color-light;
 
   &--dark {
+    @extend .user-profile;
     background-color: $background-color-dark;
   }
 }
@@ -25,6 +26,7 @@
   border: 8px solid $background-color-light;
 
   &--dark {
+    @extend .user-img;
     border: 8px solid $background-color-dark;
   }
 
@@ -48,6 +50,7 @@
   max-width: -webkit-fill-available;
 
   &--dark {
+    @extend .user-name;
     color: $text-primary-color-dark;
   }
 }
@@ -63,6 +66,7 @@
   max-width: -webkit-fill-available;
 
   &--dark {
+    @extend .user-bio;
     color: $text-primary-color-dark;
   }
 }
@@ -86,6 +90,10 @@
     &:hover {
       background-color: #E2E2E2;
     }
+  }
+
+  &--dark {
+    @extend .user-status;
   }
 
   &:hover {

@@ -3,7 +3,7 @@ import { IMessage } from '../../types/ChatTypes';
 import LoaderComp from '../molecules/LoaderComp';
 import UserMessage from '../molecules/userChat/UserMessage';
 import AppContext from '../context/AppContext';
-import MakeThemeClassName from '../helpers/MakeThemeClassname';
+import makeThemeClassName from '../helpers/makeThemeClassname';
 import '../../assets/css/userChat/user-message.scss';
 import { IUser } from '../../types/MainTypes';
 
@@ -15,7 +15,7 @@ interface IUserChatMessages {
 
 const UserChatMessages: React.FC<IUserChatMessages> = React.memo(({ messages, profileUId, onProfileClick }) => {
     const { isDarkTheme } = useContext(AppContext);
-    const chatBackgroundClassName = MakeThemeClassName('chat-background', isDarkTheme);
+    const chatBackgroundClassName = makeThemeClassName('chat-background', isDarkTheme);
 
     if (!messages) {
         return <LoaderComp loadingText="Fetching messages..." />;

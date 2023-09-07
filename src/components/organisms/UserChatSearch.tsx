@@ -4,7 +4,7 @@ import UserIcon from '../atom/icons/UserIcon';
 import '../../assets/css/userSearch/user-search.scss';
 import Input from '../atom/common/Input';
 import AppContext from '../context/AppContext';
-import MakeThemeClassName from '../helpers/MakeThemeClassname';
+import makeThemeClassName from '../helpers/makeThemeClassname';
 
 export type TSearchMode = 'User' | 'Text';
 
@@ -43,7 +43,7 @@ const UserChatSearch: React.FC<IUserChatSearch> = React.memo(({ onSearch }) => {
     const placeHolder = (currentMode === 'Text') ? 'Search in messages' : 'Search by user name';
     const userIconClassName = (currentMode === 'User') ? 'user-icon user-icon--selected' : 'user-icon ';
     const messageIconClassName = (currentMode === 'Text') ? 'message-icon message-icon--selected' : 'message-icon ';
-    const userSearchClassName = MakeThemeClassName('user-search', isDarkTheme);
+    const userSearchClassName = makeThemeClassName('user-search', isDarkTheme);
 
     return (
         <div className={userSearchClassName}>

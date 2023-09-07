@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import AppContext from '../../context/AppContext';
-import MakeThemeClassName from '../../helpers/MakeThemeClassname';
+import makeThemeClassName from '../../helpers/makeThemeClassname';
 
 export interface IUserContentMessage {
     name: string,
@@ -12,9 +12,9 @@ export interface IUserContentMessage {
 const UserContentMessage: React.FC<IUserContentMessage> = React.memo(({ name, message, time, isAuthor }) => {
     const { isDarkTheme } = useContext(AppContext);
     const baseClassname = 'user-message';
-    const authorClassName = MakeThemeClassName(`${baseClassname}-author`, isDarkTheme);
-    const textClassName = MakeThemeClassName(`${baseClassname}-text`, isDarkTheme);
-    const timeClassName = MakeThemeClassName(`${baseClassname}-time`, isDarkTheme);
+    const authorClassName = makeThemeClassName(`${baseClassname}-author`, isDarkTheme);
+    const textClassName = makeThemeClassName(`${baseClassname}-text`, isDarkTheme);
+    const timeClassName = makeThemeClassName(`${baseClassname}-time`, isDarkTheme);
 
     return (
         <div className={`${baseClassname}-content`}>

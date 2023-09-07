@@ -19,3 +19,8 @@
         border-color: $background-color-message-dark;
     }
 }
+
+.search-input {
+    @extend .input;
+    margin: 0px 32px 0px 32px;
+}

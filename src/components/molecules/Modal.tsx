@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import '../../assets/css/common/modal.scss';
 import AppContext from '../context/AppContext';
-import MakeThemeClassName from '../helpers/MakeThemeClassname';
+import makeThemeClassName from '../helpers/makeThemeClassname';
 import Close from '../atom/common/Close';
 
 interface IProps {
@@ -13,11 +13,11 @@ interface IProps {
 
 const Modal: React.FC<IProps> = React.memo(({ children, onClose }) => {
     const { isDarkTheme } = useContext(AppContext);
-    const modalClassName = MakeThemeClassName("modal", isDarkTheme);
-    const modalContentClassName = MakeThemeClassName("modal-content", isDarkTheme);
+    const modalClassName = makeThemeClassName("modal", isDarkTheme);
+    const modalContentClassName = makeThemeClassName("modal-content", isDarkTheme);
 
     return (
-        <div className="modal">
+        <div className={modalClassName}>
             <div className={modalContentClassName}>
                 <Close className='modal-close' onClose={onClose} />
                 {children}

@@ -2,7 +2,7 @@ import React, { useState, useCallback, useContext } from 'react';
 import TextArea from '../atom/common/TextArea';
 import Button from '../atom/common/Button';
 import AppContext from '../context/AppContext';
-import MakeThemeClassName from '../helpers/MakeThemeClassname';
+import modalClassName from '../helpers/makeThemeClassname';
 
 interface IUserMessage {
     onSendMessage: (text: string) => void,
@@ -27,7 +27,7 @@ const UserChatMessage: React.FC<IUserMessage> = React.memo(({ onSendMessage }) =
     }
 
     const counterErrClassName = isMaxLengthExceeded ? 'user-chat-message-counter--error' : 'user-chat-message-counter';
-    const counterClassName = MakeThemeClassName(counterErrClassName, isDarkTheme);
+    const counterClassName = modalClassName(counterErrClassName, isDarkTheme);
 
     return (
         <>
@@ -42,7 +42,7 @@ const UserChatMessage: React.FC<IUserMessage> = React.memo(({ onSendMessage }) =
             <Button
                 className='user-chat-message-submit-button'
                 label='Send message'
-                disabled={isMaxLengthExceeded}
+                disabled={isMaxLengthExceeded || userText.length < 1}
                 onClick={handleSubmitMessage}
             />
         </>

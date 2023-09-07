@@ -1,4 +1,4 @@
-import MakeSubmitUserMessage from '../components/helpers/MakeSubmitUserMessage';
+import makeSubmitUserMessage from '../components/helpers/makeSubmitUserMessage';
 import { IDialog } from '../types/ChatTypes';
 import { IUser } from '../types/MainTypes';
 
@@ -35,10 +35,10 @@ export const gordonProfileMock: IUser = {
 
 export const userMessagesMock: IDialog = {
   messages: [
-    MakeSubmitUserMessage(jamieProfileMock, 'Good morning! What can I make for you today?'),
-    MakeSubmitUserMessage(gordonProfileMock, 'Make a normal breakfast!!!'),
-    MakeSubmitUserMessage(jamieProfileMock, 'As usual?'),
-    MakeSubmitUserMessage(gordonProfileMock, 'No, omelete, now!!!'),
-    MakeSubmitUserMessage(userProfileMock, 'Harsh:('),
+    makeSubmitUserMessage(jamieProfileMock, 'Good morning! What can I make for you today?'),
+    makeSubmitUserMessage(gordonProfileMock, 'Make a normal breakfast!!!'),
+    makeSubmitUserMessage(jamieProfileMock, 'As usual?'),
+    makeSubmitUserMessage(gordonProfileMock, 'No, omelete, now!!!'),
+    makeSubmitUserMessage(userProfileMock, 'Harsh:('),
   ]
 }

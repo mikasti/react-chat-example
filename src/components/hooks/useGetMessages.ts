@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from 'react';
 import mockChatApi from '../../__mocks__/mockChatApi';
 import { IMessage } from '../../types/ChatTypes';
 import { IUser } from '../../types/MainTypes';
-import MakeSubmitUserMessage from '../helpers/MakeSubmitUserMessage';
 
 interface IUseGetMessages {
     isLoading: boolean,

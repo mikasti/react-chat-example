@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { IUser } from '../../../types/MainTypes';
 import AppContext from '../../context/AppContext';
 import UserInitialsImage from '../../atom/common/UserInitialsImage';
-import MakeThemeClassName from '../../helpers/MakeThemeClassname';
+import makeThemeClassName from '../../helpers/makeThemeClassname';
 import Button from '../../atom/common/Button';
 import '../../../Assets/CSS/userCard/user-profile.scss';
 
@@ -13,11 +13,11 @@ const UserProfile: React.FC<TMainPanelData> = React.memo(({
   image, name = 'Some User', bio, isOnline,
 }) => {
   const { isDarkTheme } = useContext(AppContext);
-  const mainPanelClassName = MakeThemeClassName('user-profile', isDarkTheme);
-  const imgClassName = MakeThemeClassName('user-img', isDarkTheme);
-  const userClassName = MakeThemeClassName('user-name', isDarkTheme);
-  const bioClassname = MakeThemeClassName('user-bio', isDarkTheme);
-  const statusClassName = MakeThemeClassName('user-status', isDarkTheme);
+  const mainPanelClassName = makeThemeClassName('user-profile', isDarkTheme);
+  const imgClassName = makeThemeClassName('user-img', isDarkTheme);
+  const userClassName = makeThemeClassName('user-name', isDarkTheme);
+  const bioClassname = makeThemeClassName('user-bio', isDarkTheme);
+  const statusClassName = makeThemeClassName('user-status', isDarkTheme);
 
   // eslint-disable-next-line jsx-a11y/img-redundant-alt
   const imgComp = image ? <img src={image} className={imgClassName} alt="user profile picture" />
