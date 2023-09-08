@@ -22,14 +22,12 @@ const useGetMessages = (): IUseGetMessages => {
             .then((profile) => {
                 if (profile?.userUID) {
                     setCurrentUser(profile);
-                    mockChatApi.getMessages()
-                        .then((data) => {
-                            setUserMessages(data.messages);
-                            setIsLoading(false);
-                        });
+                    return mockChatApi.getMessages();
                 }
-            })
-            .catch((err) => {
+            }).then((data) => {
+                    setUserMessages(data.messages);
+                    setIsLoading(false);
+            }).catch((err) => {
                 setIsLoading(false);
                 setError(err);
             })
