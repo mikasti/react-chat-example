@@ -11,30 +11,37 @@ import useGetMessages from '../components/hooks/useGetMessages';
 import UserChat from '../components/organisms/UserChat';
 import LoaderComp from '../components/molecules/LoaderComp';
 import makeSubmitUserMessage from '../components/helpers/makeSubmitUserMessage';
+import { useGetProfileQuery } from '../api/userMessagesApi';
 
 const ChatPage: React.FC = () => {
   const [currentComponent, setCurrentComponent] = useState<TAppComponents>(null);
   const [isDarkTheme, setDarkTheme] = useState<boolean>(false);
+  const [allMessages, setAllMessages] = useState<IMessage[]>([]);
   const [filterMessages, setFilterMessages] = useState<IMessage[]>([]);
   const [showUserProfile, setShowUserProfile] = useState<IUser | null>(null);
   const [isShowWriteMessage, setIsShowWriteMessage] = useState<boolean>(false);
   const [isShowSearchPanel, setIsShowSearchPanel] = useState<boolean>(false);
   const [newUserMessage, setNewUserMessage] = useState<string | null>(null);
 
-  const { currentUser, userMessages, isLoading, error } = useGetMessages();
+  const { data, isFetching, isError } = useGetProfileQuery();
+  const currentUser = data ?? null;
+  const { userMessages, isLoading, error } = useGetMessages(currentUser);
 
   useEffect(() => {
+    setAllMessages(userMessages);
     setFilterMessages(userMessages);
   }, [userMessages]);
 
   useEffect(() => {
     if (newUserMessage && currentUser) {
-      const newMessageArr = [...filterMessages, makeSubmitUserMessage(currentUser, newUserMessage)];
+      const newMessageArr = [...allMessages, makeSubmitUserMessage(currentUser, newUserMessage)];
+
+      setAllMessages(newMessageArr);
       setFilterMessages(newMessageArr);
       setNewUserMessage(null);
     }
 
-  }, [newUserMessage, currentUser, filterMessages])
+  }, [newUserMessage, currentUser, allMessages])
 
   const changeShowComponent = useCallback((showComponent: TAppComponents) => {
     setCurrentComponent(showComponent);
@@ -76,24 +83,24 @@ const ChatPage: React.FC = () => {
   const handleSubmitUserMessage = useCallback((message: string) => {
     setNewUserMessage(message);
     handleClosePopup();
-  }, [currentUser, userMessages]);
+  }, [currentUser, allMessages]);
 
   const handleSearchInfo = useCallback((searchText: string, mode: 'Text' | 'User') => {
     if (mode === 'Text') {
-      const filteredMessages = userMessages.filter((item) => item.content.message.toLowerCase().includes(searchText.toLowerCase()));
+      const filteredMessages = allMessages.filter((item) => item.content.message.toLowerCase().includes(searchText.toLowerCase()));
       setFilterMessages(filteredMessages);
     }
     else if (mode === 'User') {
-      const filteredMessages = userMessages.filter((item) => item.author.name.toLowerCase().includes(searchText.toLowerCase()));
+      const filteredMessages = allMessages.filter((item) => item.author.name.toLowerCase().includes(searchText.toLowerCase()));
       setFilterMessages(filteredMessages);
     }
-  }, [userMessages]);
+  }, [allMessages]);
 
-  if (error) {
+  if (error || isError) {
     return <h2>{`Error :(`}</h2>
   }
 
-  if (isLoading) {
+  if (isLoading || isFetching) {
     return <LoaderComp loadingText='Loading user messages...' />
   }
 

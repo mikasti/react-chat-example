@@ -5,9 +5,10 @@ import { IDialog, IMessage } from '../types/ChatTypes';
 interface IChatApi {
     getMessages: () => Promise<IDialog>,
     getMessagesByUId: (uid: string) => Promise<IDialog>,
-    getProfile: () => Promise<IUser>,
 }
 const responseTimeMs: number = 100;
+
+// TODO Rewrite all API on ReduxQuery
 
 const mockChatApi: IChatApi = {
     getMessages: async () => {
@@ -19,11 +20,6 @@ const mockChatApi: IChatApi = {
         return new Promise((resolve) => {
             const filteredMessages: IMessage[] = userMessagesMock.messages.filter((message) => message.author.userUID === uid);
             setTimeout(() => resolve({ messages: filteredMessages }), responseTimeMs);
-        })
-    },
-    getProfile: async () => {
-        return new Promise((resolve) => {
-            setTimeout(() => resolve(userProfileMock), responseTimeMs);
         })
     },
 };

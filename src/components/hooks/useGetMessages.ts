@@ -1,41 +1,36 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import mockChatApi from '../../__mocks__/mockChatApi';
 import { IMessage } from '../../types/ChatTypes';
 import { IUser } from '../../types/MainTypes';
 
 interface IUseGetMessages {
     isLoading: boolean,
-    currentUser: IUser | null,
     userMessages: IMessage[],
     error: string | null,
 }
 
-const useGetMessages = (): IUseGetMessages => {
-    const [isLoading, setIsLoading] = useState<boolean>(false);
+const useGetMessages = (user: IUser | null): IUseGetMessages => {
+    const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
     const [userMessages, setUserMessages] = useState<IMessage[]>([]);
-    const [currentUser, setCurrentUser] = useState<IUser | null>(null);
 
     useEffect(() => {
-        setIsLoading(true);
-        mockChatApi.getProfile()
-            .then((profile) => {
-                if (profile?.userUID) {
-                    setCurrentUser(profile);
-                    return mockChatApi.getMessages();
-                }
-            }).then((data) => {
-                    setUserMessages(data.messages);
+        if (user?.userUID) {
+            mockChatApi.getMessages()
+                .then((data) => {
+                    if (data) {
+                        setUserMessages(data.messages);
+                        setIsLoading(false);
+                    }
+                }).catch((err) => {
+                    setError(err);
                     setIsLoading(false);
-            }).catch((err) => {
-                setIsLoading(false);
-                setError(err);
-            })
-    }, []);
+                })
+        }
+    }, [user]);
 
     return {
         isLoading,
-        currentUser,
         userMessages,
         error,
     }

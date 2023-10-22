@@ -79,12 +79,16 @@ exports[`Render <Molecules> UserCard renders correctly 1`] = `
       <div
         class="user-only-messages"
       >
-        <button
-          class="user-only-messages-button"
-          type="button"
+        <div
+          class="user-only-messages-button-wrapper"
         >
-          Show user messages
-        </button>
+          <button
+            class="user-only-messages-button"
+            type="button"
+          >
+            Show user messages
+          </button>
+        </div>
       </div>
     </div>
   </body>,
@@ -163,12 +167,16 @@ exports[`Render <Molecules> UserCard renders correctly 1`] = `
     <div
       class="user-only-messages"
     >
-      <button
-        class="user-only-messages-button"
-        type="button"
+      <div
+        class="user-only-messages-button-wrapper"
       >
-        Show user messages
-      </button>
+        <button
+          class="user-only-messages-button"
+          type="button"
+        >
+          Show user messages
+        </button>
+      </div>
     </div>
   </div>,
   "debug": [Function],
